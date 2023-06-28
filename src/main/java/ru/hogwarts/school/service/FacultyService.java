@@ -22,13 +22,13 @@ public class FacultyService {
         return facultyMapper.toDto(facultyRepository.save(facultyMapper.toEntity(facultyDtoIn)));
     }
 
-    public FacultyDtoOut readFaculty(long id) {
+    public FacultyDtoOut readFaculty(Long id) {
         return facultyRepository.findById(id)
                 .map(facultyMapper::toDto)
                 .orElseThrow(() -> new FacultyNotFindException(id));
     }
 
-    public FacultyDtoOut updateFaculty(long id, FacultyDtoIn facultyDtoIn) {
+    public FacultyDtoOut updateFaculty(Long id, FacultyDtoIn facultyDtoIn) {
         return facultyRepository.findById(id)
                 .map(oldFaculty -> {
                             oldFaculty.setColor(facultyDtoIn.getColor());
@@ -40,7 +40,7 @@ public class FacultyService {
                 .orElseThrow(() -> new FacultyNotFindException(id));
     }
 
-    public FacultyDtoOut deleteFaculty(long id) {
+    public FacultyDtoOut deleteFaculty(Long id) {
         Faculty faculty = facultyRepository.findById(id).orElseThrow(
                 () -> new FacultyNotFindException(id));
         facultyRepository.delete(faculty);

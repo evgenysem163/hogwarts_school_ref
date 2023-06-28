@@ -6,7 +6,7 @@ import ru.hogwarts.school.dto.FacultyDtoOut;
 import ru.hogwarts.school.service.FacultyService;
 
 @RestController
-@RequestMapping(value = "faculty")
+@RequestMapping( "faculty")
 public class FacultyController {
     private final FacultyService facultyService;
 
@@ -19,18 +19,18 @@ public class FacultyController {
         return facultyService.createFaculty(facultyDtoIn);
     }
 
-    @GetMapping("{id}")
-    public FacultyDtoOut readeFaculty(@PathVariable("id") long id) {
+    @GetMapping("/{id}")
+    public FacultyDtoOut readeFaculty(@PathVariable("id") Long id) {
         return facultyService.readFaculty(id);
     }
 
-    @PutMapping("{id}")
-    public FacultyDtoOut updateFaculty(@PathVariable("id") long id, @RequestBody FacultyDtoIn facultyDtoIn) {
+    @PutMapping("/{id}")
+    public FacultyDtoOut updateFaculty(@PathVariable("id") Long id, @RequestBody FacultyDtoIn facultyDtoIn) {
         return facultyService.updateFaculty(id, facultyDtoIn);
     }
 
-    @GetMapping("{id}")
-    public FacultyDtoOut deleteFaculty(@PathVariable("id") long id) {
+    @DeleteMapping("/{id}")
+    public FacultyDtoOut deleteFaculty(@PathVariable("id") Long id) {
         return facultyService.deleteFaculty(id);
     }
 
